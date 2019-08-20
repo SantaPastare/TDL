@@ -1,8 +1,8 @@
 require_relative '../../features/pages/base'
 # Home page class
 class HomePage < BasePage
-  attr_accessor :email, :password, :loginButton, :skipButton, :homeButton, :friendsTab, :friendTag, :voiceCallButton
-  attr_accessor :chatMessageInput, :leaveCallButton, :userSettings, :logOutButton
+  attr_accessor :homeButton, :friendsTab, :friendTag, :voiceCallButton, :statusMenu, :statusInvisible, :statusOnline
+  attr_accessor :chatMessageInput, :leaveCallButton, :userSettings, :logOutButton, :logOutConfirm 
 
   def initialize
 
@@ -23,18 +23,7 @@ class HomePage < BasePage
     @logOutButton = Element.new(:xpath,"//div[@role = 'button'][contains(text(), 'Log Out')]")
 
     @logOutConfirm = Element.new(:xpath,"//button//div[text()='Log Out']")
-  end
 
-  def fill_form(user)
-    @email.visible?
-    @email.click
-    @email.send_keys user['email']
-    @password.click
-    @password.send_keys user['password']
-    @loginButton.click
-  end
-
-  def load_home_page
-    visit ''
+    @statusMenu = Element.new(:css, "[aria-expanded='false']")
   end
 end

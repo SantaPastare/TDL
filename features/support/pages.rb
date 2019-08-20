@@ -1,5 +1,5 @@
 class Pages
-  attr_accessor :discordpage, :login, :users, :usermanager
+  attr_accessor :discordpage, :login, :users, :usermanager, :home
 
   def initialize
     @login ||= LoginPage.new

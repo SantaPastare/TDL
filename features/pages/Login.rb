@@ -1,20 +1,17 @@
 require_relative '../../features/pages/base'
 # Login page class
 class LoginPage < BasePage
-  attr_accessor :email, :password, :loginButton, :skipButton, :homeButton, :friendsTab, :friendTag, :voiceCallButton
-  attr_accessor :chatMessageInput, :leaveCallButton, :userSettings, :logOutButton
+  attr_accessor :email, :password, :loginButton, :skipButton, :homeButton
 
   def initialize
     @email = Element.new(:css, "[aria-label='Email']")
-    #@email = Element.new(:xpath, "input[type='email']")
     @password = Element.new(:css, "[aria-label='Password']")
-    #@password = Element.new(:xpath, "input[type='password']")
 
-    @loginButton = Element.new(:xpath, "//button//div[text()='Login']")
+    #@loginButton = Element.new(:xpath,"//button//div[text()='Login']")
+    @loginButton = Element.new(:xpath, "//div[text()='Login']")
+    @skipButton = Element.new(:xpath, "//*[text()='Skip']")
 
-    @skipButton = Element.new(:xpath, "//button[text()='Skip']")
-
-    @homeButton = Element.new(:css,"[aria-label='Home']")
+    @homeButton = Element.new(:css, "[aria-label='Home']")
 
   end
 
@@ -29,5 +26,8 @@ class LoginPage < BasePage
 
   def load_home_page
     visit ''
+    @email.visible?
+    @password.visible?
+    @loginButton.visible?
   end
 end

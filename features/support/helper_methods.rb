@@ -63,7 +63,7 @@ def assert_not_xpath_in_block(block_selector,xpath)
 end
 
 def refresh_page
-page.driver.browser.navigate.refresh
+  page.driver.browser.navigate.refresh
 end
 
 def tecdoc_image_exists
